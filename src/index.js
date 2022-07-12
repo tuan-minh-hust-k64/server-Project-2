@@ -52,8 +52,7 @@ app.get('/api/parkings', (req, res) => {
 
 app.post('/api/img', (req, res) => {
     const body = req.body;
-    // io.in(0).emit('test', {data: 'asdasda'});
-
+    io.emit('default', body);
     if(!queueCar.includes(body.car_id)){
         io.in(queueCar.length).emit('data_comming', body);
         queueCar.push(body.car_id);
